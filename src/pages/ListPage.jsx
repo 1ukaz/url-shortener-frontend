@@ -83,7 +83,7 @@ const IndexPage = () => {
             <Row key={index} className="border-bottom py-2 align-items-center">
               <Col xs={1}>#{url.id}</Col>
               <Col xs={2}>{url.code}</Col>
-              <Col xs={8}>{url.original_url.slice(0, 80) + '...'}</Col>
+              <Col xs={8}>{url.original_url.length > 80 ? url.original_url.slice(0, 80) + '...' : url.original_url}</Col>
               <Col xs={1}>
                 <Button variant="secondary" size="sm" onClick={() => handleGetUrlById(url.code)}>
                   <ArrowUpRight />
