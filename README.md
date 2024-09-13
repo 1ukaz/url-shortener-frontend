@@ -1,6 +1,9 @@
 # URL Shortener Frontend
 
-This is the frontend layer build with React for a URL shortener backend
+This project is the frontend layer built with React for a URL shortener backend API REST. 
+The purpose of this project is to provide a practical example of how to implement the same functionalities using React, allowing for a direct comparison with a similar project built using Vue 3.
+
+By examining both the React and Vue 3 implementations, you can gain insights into the differences and similarities between these two popular frameworks. This comparison aims to highlight the unique features, strengths, and potential challenges of each framework, helping you to understand their respective approaches to building modern web applications.
 
 ## Requirements
 
