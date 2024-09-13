@@ -8,7 +8,7 @@ By examining both the React and Vue 3 implementations, you can gain insights int
 ## Requirements
 
 - Node.js (LTS version recommended)
-- npm or yarn
+- npm
 
 ## Instalation
 
