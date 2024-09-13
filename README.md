@@ -29,7 +29,7 @@ npm install
 ### Set up env variables
 Copy the file `.env.example` and rename it to `.env`. Then edit the file `.env` with your environment needs.
 ```bash
-cp .env.example.env
+cp .env.example .env
 ```
 Just be sure your `.env` file has the following variable:
 ```bash
