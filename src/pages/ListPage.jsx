@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 import { ArrowUpRight, Trash, PlusLg } from 'react-bootstrap-icons';
+import Alert from 'react-bootstrap/Alert';
 import { toast } from 'react-toastify';
 import { getUserIdentifier } from '../utils/helpers';
 import urlService from '../services/urlService';
@@ -20,8 +21,7 @@ const IndexPage = () => {
       const response = await urlService.getUrlList(userId);
       setUrls(response.data.urls);
     } catch (error) {
-      console.error(error);
-      toast.error('Error fetching URLs');
+      toast.error(error.response.data.message);
     } finally {
       setLoading(false);
     }
@@ -71,7 +71,7 @@ const IndexPage = () => {
       </Row>
       {loading ? (
         <Spinner animation="border" />
-      ) : (
+      ) : urls.length > 0 ? (
         <>
           <Row className="font-weight-bold bg-light border-bottom py-2">
             <Col xs={1}>Id</Col>
@@ -79,7 +79,7 @@ const IndexPage = () => {
             <Col xs={8}>Original URL</Col>
             <Col xs={1}>Actions</Col>
           </Row>
-          {urls.length && urls.map((url, index) => (
+          {urls.map((url, index) => (
             <Row key={index} className="border-bottom py-2 align-items-center">
               <Col xs={1}>#{url.id}</Col>
               <Col xs={2}>{url.code}</Col>
@@ -95,8 +95,12 @@ const IndexPage = () => {
             </Row>
           ))}
         </>
+      ) : (
+        <Alert variant="secondary">
+          No URLs found. Add a new one by clicking the button above right!
+        </Alert>
       )}
-
+  
       <Modal centered show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Confirm Deletion</Modal.Title>
@@ -112,7 +116,7 @@ const IndexPage = () => {
         </Modal.Footer>
       </Modal>
     </Container>
-  );
+  );  
 };
 
 export default IndexPage;
